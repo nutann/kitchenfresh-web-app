@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "paths": {
+    "/data": {
+      "permissions": {
+        "setting": "open"
+      },
+      "lambdaFunction": "sendChefNotification"
+    },
+    "/sendEmail": {
+      "name": "/sendEmail",
+      "lambdaFunction": "sendEmail",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "guest": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

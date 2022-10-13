@@ -1,0 +1,119 @@
+type User @model  {
+    id: ID!
+    name: String!
+    user_type: String!
+    email: String
+}
+
+type Customer
+@model
+{
+    id: ID!
+    name: String!
+    phone_number: String!
+    email: String
+}
+
+type Chef
+@model
+{
+    id: ID!
+    name: String!
+    lat: String!
+    long1: String!
+    description: String
+    num_of_ratings: Int!
+    average_rating: Float!
+    device_token: String
+    sns_arn: String
+    email: String
+}
+
+type Dish
+@model
+{
+    id: ID!
+    chef_id: String!
+    name: String!
+    description: String
+    Price: Float!
+    initial_quantity: Int!
+    Avalability: String!
+    food_type: String!
+    remaining_quantity: Int!
+    dish_category: String!
+    request_quantity: Int!
+    cuisine_type: String!
+    email:String
+}
+
+type Order
+@model{
+    id: ID!
+    customerId: String!
+    chefId: String!
+    orderPlacedDate: AWSDateTime!
+    deliveryDate: AWSDateTime!
+    deliveryTime: String!
+    deliveryType: String!
+    amount: Float!
+    status: String!
+    address: String!
+    special_instruction: String
+    email: String
+    cust_email: String
+}
+
+type OrderDishes
+@model{
+    id: ID!
+    dishId: String!
+    quantity: Int!
+    orderID: String!
+    dish_name: String!
+    price: Float!
+    email: String
+    cust_email: String
+}
+
+type Reviews
+@model {
+    id: ID!
+    chefId: String!
+    custId: String!
+    rating: Float!
+    Comment: String
+    orderID: String!
+}
+
+
+
+type Promo
+@model {
+    id: ID!
+    code: String!
+    value: Int!
+    type: String!
+}
+
+type Passcode
+@model {
+    id: ID!
+    pass_code: Int
+}
+
+type ServiceRegion
+@model {
+    id: ID!
+    city_name: String!
+}
+
+type Address
+@model {
+    id: ID!
+    userId:String!
+    postcode: String!
+    houseNumber: String
+    additional: String
+    email: String!
+}

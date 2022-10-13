@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authhomefoodappandroiddd055511"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "OPTIMISTIC_CONCURRENCY"
+      },
+      "perModelResolutionStrategy": [
+        {
+          "resolutionStrategy": {
+            "type": "OPTIMISTIC_CONCURRENCY"
+          },
+          "entityName": "User"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "OPTIMISTIC_CONCURRENCY"
+          },
+          "entityName": "Customer"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "OPTIMISTIC_CONCURRENCY"
+          },
+          "entityName": "Chef"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "OPTIMISTIC_CONCURRENCY"
+          },
+          "entityName": "Dish"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "OPTIMISTIC_CONCURRENCY"
+          },
+          "entityName": "Order"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "OPTIMISTIC_CONCURRENCY"
+          },
+          "entityName": "OrderDishes"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "OPTIMISTIC_CONCURRENCY"
+          },
+          "entityName": "Reviews"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "OPTIMISTIC_CONCURRENCY"
+          },
+          "entityName": "Passcode"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "OPTIMISTIC_CONCURRENCY"
+          },
+          "entityName": "Address"
+        }
+      ]
+    },
+    "apiName": "amplifyDatasource",
+    "gqlSchemaPath": "C:\\work\\homemade\\kfresh\\amplify\\backend\\api\\amplifyDatasource\\schema.graphql"
+  }
+}

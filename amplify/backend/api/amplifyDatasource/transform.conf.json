@@ -1,0 +1,48 @@
+{
+    "Version": 5,
+    "ElasticsearchWarning": true,
+    "ResolverConfig": {
+        "project": {
+            "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+            "ConflictDetection": "VERSION"
+        },
+        "models": {
+            "User": {
+                "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+                "ConflictDetection": "VERSION"
+            },
+            "Customer": {
+                "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+                "ConflictDetection": "VERSION"
+            },
+            "Chef": {
+                "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+                "ConflictDetection": "VERSION"
+            },
+            "Dish": {
+                "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+                "ConflictDetection": "VERSION"
+            },
+            "Order": {
+                "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+                "ConflictDetection": "VERSION"
+            },
+            "OrderDishes": {
+                "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+                "ConflictDetection": "VERSION"
+            },
+            "Reviews": {
+                "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+                "ConflictDetection": "VERSION"
+            },
+            "Passcode": {
+                "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+                "ConflictDetection": "VERSION"
+            },
+            "Address": {
+                "ConflictHandler": "OPTIMISTIC_CONCURRENCY",
+                "ConflictDetection": "VERSION"
+            }
+        }
+    }
+}

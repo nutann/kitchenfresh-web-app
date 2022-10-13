@@ -1,0 +1,31 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-kfresh-dev-202604-authRole",
+      "UnauthRoleArn": "arn:aws:iam::442030399647:role/amplify-kfresh-dev-202604-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::442030399647:role/amplify-kfresh-dev-202604-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-kfresh-dev-202604-deployment",
+      "UnauthRoleName": "amplify-kfresh-dev-202604-unauthRole",
+      "StackName": "amplify-kfresh-dev-202604",
+      "StackId": "arn:aws:cloudformation:eu-central-1:442030399647:stack/amplify-kfresh-dev-202604/d7f57990-44bd-11ed-a188-0ad4c7f4d434",
+      "AmplifyAppId": "d1xhs33zewcl78",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-kfresh-dev-202604-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "homefoodappandroiddd055511": {}
+      },
+      "function": {
+        "sendChefNotification": {
+          "deploymentBucketName": "amplify-kfresh-dev-202604-deployment",
+          "s3Key": "amplify-builds/sendChefNotification-4333626670433161734d-build.zip"
+        },
+        "sendEmail": {
+          "deploymentBucketName": "amplify-kfresh-dev-202604-deployment",
+          "s3Key": "amplify-builds/sendEmail-6a536279633755325a46-build.zip"
+        }
+      }
+    }
+  }
+}

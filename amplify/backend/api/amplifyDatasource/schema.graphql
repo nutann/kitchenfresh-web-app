@@ -1,0 +1,96 @@
+type User @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  name: String!
+  user_type: String!
+  email: String @index(name: "email")
+}
+
+type Customer @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  name: String!
+  phone_number: String!
+  email: String @index(name: "email")
+}
+
+type Chef @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  name: String!
+  lat: String!
+  long1: String!
+  description: String
+  num_of_ratings: Int!
+  average_rating: Float!
+  device_token: String
+  sns_arn: String
+  email: String @index(name: "email")
+}
+
+type Dish @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  chef_id: String!
+  name: String!
+  description: String
+  Price: Float!
+  initial_quantity: Int!
+  Avalability: String!
+  food_type: String!
+  remaining_quantity: Int!
+  dish_category: String!
+  request_quantity: Int!
+  cuisine_type: String!
+    allergy_info: String
+    email: String @index(name: "email")
+}
+
+type Order @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  customerId: String!
+  chefId: String!
+  orderPlacedDate: AWSDateTime!
+  deliveryDate: AWSDateTime!
+  deliveryTime: String!
+    deliveryType: String!
+    deliveryNote: String
+    amount: Float!
+  status: String!
+  address: String!
+  special_instruction: String
+  email: String @index(name: "email")
+  cust_email: String @index(name: "cust_email")
+}
+
+type OrderDishes @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  dishId: String!
+  quantity: Int!
+  orderID: String!
+  dish_name: String!
+  price: Float!
+  email: String @index(name: "email")
+  cust_email: String @index(name: "cust-email")
+}
+
+type Reviews @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  chefId: String!
+  custId: String!
+  rating: Float!
+  Comment: String
+  orderID: String!
+}
+
+
+type Passcode @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  pass_code: Int
+}
+
+type Address @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  userId: String!
+  postcode: String!
+  houseNumber: String
+  street: String
+  additional: String
+  email: String! @index(name: "email")
+}
