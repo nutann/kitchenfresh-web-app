@@ -1,0 +1,928 @@
+
+type User {
+  id: ID!
+  name: String!
+  user_type: String!
+  email: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Customer {
+  id: ID!
+  name: String!
+  phone_number: String!
+  email: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Chef {
+  id: ID!
+  name: String!
+  lat: String!
+  long1: String!
+  description: String
+  num_of_ratings: Int!
+  average_rating: Float!
+  device_token: String
+  sns_arn: String
+  email: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Dish {
+  id: ID!
+  chef_id: String!
+  name: String!
+  description: String
+  Price: Float!
+  initial_quantity: Int!
+  Avalability: String!
+  food_type: String!
+  remaining_quantity: Int!
+  dish_category: String!
+  request_quantity: Int!
+  cuisine_type: String!
+  allergy_info: String
+  email: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Order {
+  id: ID!
+  customerId: String!
+  chefId: String!
+  orderPlacedDate: AWSDateTime!
+  deliveryDate: AWSDateTime!
+  deliveryTime: String!
+  deliveryType: String!
+  deliveryNote: String
+  amount: Float!
+  status: String!
+  address: String!
+  special_instruction: String
+  email: String
+  cust_email: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type OrderDishes {
+  id: ID!
+  dishId: String!
+  quantity: Int!
+  orderID: String!
+  dish_name: String!
+  price: Float!
+  email: String
+  cust_email: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Reviews {
+  id: ID!
+  chefId: String!
+  custId: String!
+  rating: Float!
+  Comment: String
+  orderID: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Passcode {
+  id: ID!
+  pass_code: Int
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Address {
+  id: ID!
+  userId: String!
+  postcode: String!
+  houseNumber: String
+  street: String
+  additional: String
+  email: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUserConnection {
+  items: [User]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelUserFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  user_type: ModelStringInput
+  email: ModelStringInput
+  and: [ModelUserFilterInput]
+  or: [ModelUserFilterInput]
+  not: ModelUserFilterInput
+}
+
+type Query {
+  getUser(id: ID!): User
+  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection
+  syncUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUserConnection
+  getCustomer(id: ID!): Customer
+  listCustomers(filter: ModelCustomerFilterInput, limit: Int, nextToken: String): ModelCustomerConnection
+  syncCustomers(filter: ModelCustomerFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelCustomerConnection
+  getChef(id: ID!): Chef
+  listChefs(filter: ModelChefFilterInput, limit: Int, nextToken: String): ModelChefConnection
+  syncChefs(filter: ModelChefFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelChefConnection
+  getDish(id: ID!): Dish
+  listDishes(filter: ModelDishFilterInput, limit: Int, nextToken: String): ModelDishConnection
+  syncDishes(filter: ModelDishFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelDishConnection
+  getOrder(id: ID!): Order
+  listOrders(filter: ModelOrderFilterInput, limit: Int, nextToken: String): ModelOrderConnection
+  syncOrders(filter: ModelOrderFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelOrderConnection
+  getOrderDishes(id: ID!): OrderDishes
+  listOrderDishes(filter: ModelOrderDishesFilterInput, limit: Int, nextToken: String): ModelOrderDishesConnection
+  syncOrderDishes(filter: ModelOrderDishesFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelOrderDishesConnection
+  getReviews(id: ID!): Reviews
+  listReviews(filter: ModelReviewsFilterInput, limit: Int, nextToken: String): ModelReviewsConnection
+  syncReviews(filter: ModelReviewsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelReviewsConnection
+  getPasscode(id: ID!): Passcode
+  listPasscodes(filter: ModelPasscodeFilterInput, limit: Int, nextToken: String): ModelPasscodeConnection
+  syncPasscodes(filter: ModelPasscodeFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelPasscodeConnection
+  getAddress(id: ID!): Address
+  listAddresses(filter: ModelAddressFilterInput, limit: Int, nextToken: String): ModelAddressConnection
+  syncAddresses(filter: ModelAddressFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelAddressConnection
+}
+
+input ModelUserConditionInput {
+  name: ModelStringInput
+  user_type: ModelStringInput
+  email: ModelStringInput
+  and: [ModelUserConditionInput]
+  or: [ModelUserConditionInput]
+  not: ModelUserConditionInput
+}
+
+input CreateUserInput {
+  id: ID
+  name: String!
+  user_type: String!
+  email: String
+  _version: Int
+}
+
+input UpdateUserInput {
+  id: ID!
+  name: String
+  user_type: String
+  email: String
+  _version: Int
+}
+
+input DeleteUserInput {
+  id: ID!
+  _version: Int
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!, condition: ModelUserConditionInput): User
+  updateUser(input: UpdateUserInput!, condition: ModelUserConditionInput): User
+  deleteUser(input: DeleteUserInput!, condition: ModelUserConditionInput): User
+  createCustomer(input: CreateCustomerInput!, condition: ModelCustomerConditionInput): Customer
+  updateCustomer(input: UpdateCustomerInput!, condition: ModelCustomerConditionInput): Customer
+  deleteCustomer(input: DeleteCustomerInput!, condition: ModelCustomerConditionInput): Customer
+  createChef(input: CreateChefInput!, condition: ModelChefConditionInput): Chef
+  updateChef(input: UpdateChefInput!, condition: ModelChefConditionInput): Chef
+  deleteChef(input: DeleteChefInput!, condition: ModelChefConditionInput): Chef
+  createDish(input: CreateDishInput!, condition: ModelDishConditionInput): Dish
+  updateDish(input: UpdateDishInput!, condition: ModelDishConditionInput): Dish
+  deleteDish(input: DeleteDishInput!, condition: ModelDishConditionInput): Dish
+  createOrder(input: CreateOrderInput!, condition: ModelOrderConditionInput): Order
+  updateOrder(input: UpdateOrderInput!, condition: ModelOrderConditionInput): Order
+  deleteOrder(input: DeleteOrderInput!, condition: ModelOrderConditionInput): Order
+  createOrderDishes(input: CreateOrderDishesInput!, condition: ModelOrderDishesConditionInput): OrderDishes
+  updateOrderDishes(input: UpdateOrderDishesInput!, condition: ModelOrderDishesConditionInput): OrderDishes
+  deleteOrderDishes(input: DeleteOrderDishesInput!, condition: ModelOrderDishesConditionInput): OrderDishes
+  createReviews(input: CreateReviewsInput!, condition: ModelReviewsConditionInput): Reviews
+  updateReviews(input: UpdateReviewsInput!, condition: ModelReviewsConditionInput): Reviews
+  deleteReviews(input: DeleteReviewsInput!, condition: ModelReviewsConditionInput): Reviews
+  createPasscode(input: CreatePasscodeInput!, condition: ModelPasscodeConditionInput): Passcode
+  updatePasscode(input: UpdatePasscodeInput!, condition: ModelPasscodeConditionInput): Passcode
+  deletePasscode(input: DeletePasscodeInput!, condition: ModelPasscodeConditionInput): Passcode
+  createAddress(input: CreateAddressInput!, condition: ModelAddressConditionInput): Address
+  updateAddress(input: UpdateAddressInput!, condition: ModelAddressConditionInput): Address
+  deleteAddress(input: DeleteAddressInput!, condition: ModelAddressConditionInput): Address
+}
+
+type Subscription {
+  onCreateUser: User @aws_subscribe(mutations: ["createUser"])
+  onUpdateUser: User @aws_subscribe(mutations: ["updateUser"])
+  onDeleteUser: User @aws_subscribe(mutations: ["deleteUser"])
+  onCreateCustomer: Customer @aws_subscribe(mutations: ["createCustomer"])
+  onUpdateCustomer: Customer @aws_subscribe(mutations: ["updateCustomer"])
+  onDeleteCustomer: Customer @aws_subscribe(mutations: ["deleteCustomer"])
+  onCreateChef: Chef @aws_subscribe(mutations: ["createChef"])
+  onUpdateChef: Chef @aws_subscribe(mutations: ["updateChef"])
+  onDeleteChef: Chef @aws_subscribe(mutations: ["deleteChef"])
+  onCreateDish: Dish @aws_subscribe(mutations: ["createDish"])
+  onUpdateDish: Dish @aws_subscribe(mutations: ["updateDish"])
+  onDeleteDish: Dish @aws_subscribe(mutations: ["deleteDish"])
+  onCreateOrder: Order @aws_subscribe(mutations: ["createOrder"])
+  onUpdateOrder: Order @aws_subscribe(mutations: ["updateOrder"])
+  onDeleteOrder: Order @aws_subscribe(mutations: ["deleteOrder"])
+  onCreateOrderDishes: OrderDishes @aws_subscribe(mutations: ["createOrderDishes"])
+  onUpdateOrderDishes: OrderDishes @aws_subscribe(mutations: ["updateOrderDishes"])
+  onDeleteOrderDishes: OrderDishes @aws_subscribe(mutations: ["deleteOrderDishes"])
+  onCreateReviews: Reviews @aws_subscribe(mutations: ["createReviews"])
+  onUpdateReviews: Reviews @aws_subscribe(mutations: ["updateReviews"])
+  onDeleteReviews: Reviews @aws_subscribe(mutations: ["deleteReviews"])
+  onCreatePasscode: Passcode @aws_subscribe(mutations: ["createPasscode"])
+  onUpdatePasscode: Passcode @aws_subscribe(mutations: ["updatePasscode"])
+  onDeletePasscode: Passcode @aws_subscribe(mutations: ["deletePasscode"])
+  onCreateAddress: Address @aws_subscribe(mutations: ["createAddress"])
+  onUpdateAddress: Address @aws_subscribe(mutations: ["updateAddress"])
+  onDeleteAddress: Address @aws_subscribe(mutations: ["deleteAddress"])
+}
+
+type ModelCustomerConnection {
+  items: [Customer]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelCustomerFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  phone_number: ModelStringInput
+  email: ModelStringInput
+  and: [ModelCustomerFilterInput]
+  or: [ModelCustomerFilterInput]
+  not: ModelCustomerFilterInput
+}
+
+input ModelCustomerConditionInput {
+  name: ModelStringInput
+  phone_number: ModelStringInput
+  email: ModelStringInput
+  and: [ModelCustomerConditionInput]
+  or: [ModelCustomerConditionInput]
+  not: ModelCustomerConditionInput
+}
+
+input CreateCustomerInput {
+  id: ID
+  name: String!
+  phone_number: String!
+  email: String
+  _version: Int
+}
+
+input UpdateCustomerInput {
+  id: ID!
+  name: String
+  phone_number: String
+  email: String
+  _version: Int
+}
+
+input DeleteCustomerInput {
+  id: ID!
+  _version: Int
+}
+
+type ModelChefConnection {
+  items: [Chef]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelChefFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  lat: ModelStringInput
+  long1: ModelStringInput
+  description: ModelStringInput
+  num_of_ratings: ModelIntInput
+  average_rating: ModelFloatInput
+  device_token: ModelStringInput
+  sns_arn: ModelStringInput
+  email: ModelStringInput
+  and: [ModelChefFilterInput]
+  or: [ModelChefFilterInput]
+  not: ModelChefFilterInput
+}
+
+input ModelChefConditionInput {
+  name: ModelStringInput
+  lat: ModelStringInput
+  long1: ModelStringInput
+  description: ModelStringInput
+  num_of_ratings: ModelIntInput
+  average_rating: ModelFloatInput
+  device_token: ModelStringInput
+  sns_arn: ModelStringInput
+  email: ModelStringInput
+  and: [ModelChefConditionInput]
+  or: [ModelChefConditionInput]
+  not: ModelChefConditionInput
+}
+
+input CreateChefInput {
+  id: ID
+  name: String!
+  lat: String!
+  long1: String!
+  description: String
+  num_of_ratings: Int!
+  average_rating: Float!
+  device_token: String
+  sns_arn: String
+  email: String
+  _version: Int
+}
+
+input UpdateChefInput {
+  id: ID!
+  name: String
+  lat: String
+  long1: String
+  description: String
+  num_of_ratings: Int
+  average_rating: Float
+  device_token: String
+  sns_arn: String
+  email: String
+  _version: Int
+}
+
+input DeleteChefInput {
+  id: ID!
+  _version: Int
+}
+
+type ModelDishConnection {
+  items: [Dish]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelDishFilterInput {
+  id: ModelIDInput
+  chef_id: ModelStringInput
+  name: ModelStringInput
+  description: ModelStringInput
+  Price: ModelFloatInput
+  initial_quantity: ModelIntInput
+  Avalability: ModelStringInput
+  food_type: ModelStringInput
+  remaining_quantity: ModelIntInput
+  dish_category: ModelStringInput
+  request_quantity: ModelIntInput
+  cuisine_type: ModelStringInput
+  allergy_info: ModelStringInput
+  email: ModelStringInput
+  and: [ModelDishFilterInput]
+  or: [ModelDishFilterInput]
+  not: ModelDishFilterInput
+}
+
+input ModelDishConditionInput {
+  chef_id: ModelStringInput
+  name: ModelStringInput
+  description: ModelStringInput
+  Price: ModelFloatInput
+  initial_quantity: ModelIntInput
+  Avalability: ModelStringInput
+  food_type: ModelStringInput
+  remaining_quantity: ModelIntInput
+  dish_category: ModelStringInput
+  request_quantity: ModelIntInput
+  cuisine_type: ModelStringInput
+  allergy_info: ModelStringInput
+  email: ModelStringInput
+  and: [ModelDishConditionInput]
+  or: [ModelDishConditionInput]
+  not: ModelDishConditionInput
+}
+
+input CreateDishInput {
+  id: ID
+  chef_id: String!
+  name: String!
+  description: String
+  Price: Float!
+  initial_quantity: Int!
+  Avalability: String!
+  food_type: String!
+  remaining_quantity: Int!
+  dish_category: String!
+  request_quantity: Int!
+  cuisine_type: String!
+  allergy_info: String
+  email: String
+  _version: Int
+}
+
+input UpdateDishInput {
+  id: ID!
+  chef_id: String
+  name: String
+  description: String
+  Price: Float
+  initial_quantity: Int
+  Avalability: String
+  food_type: String
+  remaining_quantity: Int
+  dish_category: String
+  request_quantity: Int
+  cuisine_type: String
+  allergy_info: String
+  email: String
+  _version: Int
+}
+
+input DeleteDishInput {
+  id: ID!
+  _version: Int
+}
+
+type ModelOrderConnection {
+  items: [Order]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelOrderFilterInput {
+  id: ModelIDInput
+  customerId: ModelStringInput
+  chefId: ModelStringInput
+  orderPlacedDate: ModelStringInput
+  deliveryDate: ModelStringInput
+  deliveryTime: ModelStringInput
+  deliveryType: ModelStringInput
+  deliveryNote: ModelStringInput
+  amount: ModelFloatInput
+  status: ModelStringInput
+  address: ModelStringInput
+  special_instruction: ModelStringInput
+  email: ModelStringInput
+  cust_email: ModelStringInput
+  and: [ModelOrderFilterInput]
+  or: [ModelOrderFilterInput]
+  not: ModelOrderFilterInput
+}
+
+input ModelOrderConditionInput {
+  customerId: ModelStringInput
+  chefId: ModelStringInput
+  orderPlacedDate: ModelStringInput
+  deliveryDate: ModelStringInput
+  deliveryTime: ModelStringInput
+  deliveryType: ModelStringInput
+  deliveryNote: ModelStringInput
+  amount: ModelFloatInput
+  status: ModelStringInput
+  address: ModelStringInput
+  special_instruction: ModelStringInput
+  email: ModelStringInput
+  cust_email: ModelStringInput
+  and: [ModelOrderConditionInput]
+  or: [ModelOrderConditionInput]
+  not: ModelOrderConditionInput
+}
+
+input CreateOrderInput {
+  id: ID
+  customerId: String!
+  chefId: String!
+  orderPlacedDate: AWSDateTime!
+  deliveryDate: AWSDateTime!
+  deliveryTime: String!
+  deliveryType: String!
+  deliveryNote: String
+  amount: Float!
+  status: String!
+  address: String!
+  special_instruction: String
+  email: String
+  cust_email: String
+  _version: Int
+}
+
+input UpdateOrderInput {
+  id: ID!
+  customerId: String
+  chefId: String
+  orderPlacedDate: AWSDateTime
+  deliveryDate: AWSDateTime
+  deliveryTime: String
+  deliveryType: String
+  deliveryNote: String
+  amount: Float
+  status: String
+  address: String
+  special_instruction: String
+  email: String
+  cust_email: String
+  _version: Int
+}
+
+input DeleteOrderInput {
+  id: ID!
+  _version: Int
+}
+
+type ModelOrderDishesConnection {
+  items: [OrderDishes]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelOrderDishesFilterInput {
+  id: ModelIDInput
+  dishId: ModelStringInput
+  quantity: ModelIntInput
+  orderID: ModelStringInput
+  dish_name: ModelStringInput
+  price: ModelFloatInput
+  email: ModelStringInput
+  cust_email: ModelStringInput
+  and: [ModelOrderDishesFilterInput]
+  or: [ModelOrderDishesFilterInput]
+  not: ModelOrderDishesFilterInput
+}
+
+input ModelOrderDishesConditionInput {
+  dishId: ModelStringInput
+  quantity: ModelIntInput
+  orderID: ModelStringInput
+  dish_name: ModelStringInput
+  price: ModelFloatInput
+  email: ModelStringInput
+  cust_email: ModelStringInput
+  and: [ModelOrderDishesConditionInput]
+  or: [ModelOrderDishesConditionInput]
+  not: ModelOrderDishesConditionInput
+}
+
+input CreateOrderDishesInput {
+  id: ID
+  dishId: String!
+  quantity: Int!
+  orderID: String!
+  dish_name: String!
+  price: Float!
+  email: String
+  cust_email: String
+  _version: Int
+}
+
+input UpdateOrderDishesInput {
+  id: ID!
+  dishId: String
+  quantity: Int
+  orderID: String
+  dish_name: String
+  price: Float
+  email: String
+  cust_email: String
+  _version: Int
+}
+
+input DeleteOrderDishesInput {
+  id: ID!
+  _version: Int
+}
+
+type ModelReviewsConnection {
+  items: [Reviews]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelReviewsFilterInput {
+  id: ModelIDInput
+  chefId: ModelStringInput
+  custId: ModelStringInput
+  rating: ModelFloatInput
+  Comment: ModelStringInput
+  orderID: ModelStringInput
+  and: [ModelReviewsFilterInput]
+  or: [ModelReviewsFilterInput]
+  not: ModelReviewsFilterInput
+}
+
+input ModelReviewsConditionInput {
+  chefId: ModelStringInput
+  custId: ModelStringInput
+  rating: ModelFloatInput
+  Comment: ModelStringInput
+  orderID: ModelStringInput
+  and: [ModelReviewsConditionInput]
+  or: [ModelReviewsConditionInput]
+  not: ModelReviewsConditionInput
+}
+
+input CreateReviewsInput {
+  id: ID
+  chefId: String!
+  custId: String!
+  rating: Float!
+  Comment: String
+  orderID: String!
+  _version: Int
+}
+
+input UpdateReviewsInput {
+  id: ID!
+  chefId: String
+  custId: String
+  rating: Float
+  Comment: String
+  orderID: String
+  _version: Int
+}
+
+input DeleteReviewsInput {
+  id: ID!
+  _version: Int
+}
+
+type ModelPasscodeConnection {
+  items: [Passcode]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelPasscodeFilterInput {
+  id: ModelIDInput
+  pass_code: ModelIntInput
+  and: [ModelPasscodeFilterInput]
+  or: [ModelPasscodeFilterInput]
+  not: ModelPasscodeFilterInput
+}
+
+input ModelPasscodeConditionInput {
+  pass_code: ModelIntInput
+  and: [ModelPasscodeConditionInput]
+  or: [ModelPasscodeConditionInput]
+  not: ModelPasscodeConditionInput
+}
+
+input CreatePasscodeInput {
+  id: ID
+  pass_code: Int
+  _version: Int
+}
+
+input UpdatePasscodeInput {
+  id: ID!
+  pass_code: Int
+  _version: Int
+}
+
+input DeletePasscodeInput {
+  id: ID!
+  _version: Int
+}
+
+type ModelAddressConnection {
+  items: [Address]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelAddressFilterInput {
+  id: ModelIDInput
+  userId: ModelStringInput
+  postcode: ModelStringInput
+  houseNumber: ModelStringInput
+  street: ModelStringInput
+  additional: ModelStringInput
+  email: ModelStringInput
+  and: [ModelAddressFilterInput]
+  or: [ModelAddressFilterInput]
+  not: ModelAddressFilterInput
+}
+
+input ModelAddressConditionInput {
+  userId: ModelStringInput
+  postcode: ModelStringInput
+  houseNumber: ModelStringInput
+  street: ModelStringInput
+  additional: ModelStringInput
+  email: ModelStringInput
+  and: [ModelAddressConditionInput]
+  or: [ModelAddressConditionInput]
+  not: ModelAddressConditionInput
+}
+
+input CreateAddressInput {
+  id: ID
+  userId: String!
+  postcode: String!
+  houseNumber: String
+  street: String
+  additional: String
+  email: String!
+  _version: Int
+}
+
+input UpdateAddressInput {
+  id: ID!
+  userId: String
+  postcode: String
+  houseNumber: String
+  street: String
+  additional: String
+  email: String
+  _version: Int
+}
+
+input DeleteAddressInput {
+  id: ID!
+  _version: Int
+}
+

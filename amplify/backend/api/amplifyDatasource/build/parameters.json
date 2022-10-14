@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "amplifyDatasource",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authhomefoodappandroiddd055511",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-kfresh-dev-202604-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/84cf4665ca28eb22fe8b0bd2634fd3dce43451c2"
+}
