@@ -26,6 +26,10 @@ export default function Orders() {
             accessor: "email"
           },
           {
+            Header: "Address/Pickup Point",
+            accessor: "address"
+          },
+          {
             Header: "Status",
             accessor: "status"
           },
