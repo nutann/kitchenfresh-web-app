@@ -33,9 +33,6 @@ class App extends Component {
           <Route path="/Orders" element={<Orders />}/>
         </Routes>
       </BrowserRouter>
-        <p> Click a button </p>
-        <button onClick={this.listQuery}>GraphQL List Query</button>
-        <button onClick={this.todoMutation}>GraphQL Todo Mutation</button>
         </header>
       </div>
       

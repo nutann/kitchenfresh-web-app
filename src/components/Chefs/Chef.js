@@ -26,17 +26,11 @@ export default class Chef extends Component {
           console.log("imageUrl "+imageUrl);
           return item;
         }));
-        // let newItems = items.map( (item) => {
-        // //  const imageUrl = await Storage.get(item.id);
-        //   item.image = "imageUrl";
-        //   return item;
-        // });
-        
+       
         this.setState({
           chefs: newItems,
           responseUrl: newItems[0].image
         });
-        alert(JSON.stringify(newItems));
       };
       render() {
         return (

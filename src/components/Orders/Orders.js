@@ -10,7 +10,7 @@ export default function Orders() {
   const columns = [
       {
         // first group - TV Show
-        Header: "Orders",
+        Header: "ORDERS",
         // First group columns
         columns: [
           {
@@ -55,9 +55,6 @@ export default function Orders() {
       listQuery();
     }, []);
 
-      // componentDidMount() {
-      //   this.listQuery();
-      // }
       async function listQuery() {
         console.log("listing todos");
         const allChefs = await API.graphql(graphqlOperation(listOrders));
@@ -67,8 +64,7 @@ export default function Orders() {
           item.orderPlacedDate = new Date(item.orderPlacedDate).toLocaleDateString();
         }));
         setData(items);
-          console.log(JSON.stringify(items));
-          alert(JSON.stringify(items));
+        console.log(JSON.stringify(items));
     };
 
     return (
