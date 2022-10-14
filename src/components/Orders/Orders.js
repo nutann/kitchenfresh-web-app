@@ -22,6 +22,10 @@ export default function Orders() {
             accessor: "cust_email"
           },
           {
+            Header: "Chef",
+            accessor: "email"
+          },
+          {
             Header: "Status",
             accessor: "status"
           },
@@ -54,11 +58,15 @@ export default function Orders() {
         console.log("listing todos");
         const allChefs = await API.graphql(graphqlOperation(listOrders));
         let items = allChefs.data.listOrders.items;
+        const newItems = await Promise.all(items.map((item) => {
+          item.deliveryDate = new Date(item.deliveryDate).toLocaleDateString();
+          item.orderPlacedDate = new Date(item.orderPlacedDate).toLocaleDateString();
+        }));
         setData(items);
           console.log(JSON.stringify(items));
           alert(JSON.stringify(items));
+    };
 
-    }
     return (
       <div>
         <Table columns={columns} data={data} />
