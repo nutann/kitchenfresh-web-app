@@ -5,12 +5,11 @@
  **************************************************************************/
 
 import React from "react";
-import { Chef } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { Chef } from "../models";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type ChefProfileProps = React.PropsWithChildren<Partial<FlexProps> & {
-    chefdetails?: Chef;
-    image?: String;
+    ChefProperties?: Chef;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;

@@ -9,11 +9,7 @@ Table {
     border: 1px solid #ddd;
     padding: 8px;
   }
-  
-  
-  
-  Table tr:hover {background-color: #ddd;}
-  
+    
   Table th {
     padding-top: 12px;
     padding-bottom: 12px;

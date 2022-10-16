@@ -28,7 +28,7 @@ export default class Chef extends Component {
         }));
        
         this.setState({
-          chefs: newItems,
+          chefs: newItems.filter((chef) => chef._deleted != true ),
           responseUrl: newItems[0].image
         });
       };

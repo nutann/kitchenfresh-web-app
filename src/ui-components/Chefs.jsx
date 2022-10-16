@@ -23,10 +23,7 @@ export default function Chefs(props) {
   return (
     <Collection
       type="grid"
-      isSearchable={true}
-      isPaginated={true}
       searchPlaceholder="Search..."
-      itemsPerPage={6}
       templateColumns="1fr 1fr 1fr"
       autoFlow="row"
       alignItems="stretch"
@@ -37,10 +34,10 @@ export default function Chefs(props) {
     >
       {(item, index) => (
         <ChefProfile
-          chefdetails={item}
+          ChefProperties={item}
           height="auto"
           width="auto"
-          margin="1rem 1rem 1rem 1rem"
+          margin="2rem 2rem 2rem 2rem"
           key={item.id}
           {...(overrideItems && overrideItems({ item, index }))}
         ></ChefProfile>

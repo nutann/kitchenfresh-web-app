@@ -1,53 +1,60 @@
-// Table.js
-
-import React, {useMemo} from "react";
-import { useTable } from "react-table";
+import { React } from "react";
 import './Table.css'
-
+import { useTable, useFilters, useGlobalFilter } from "react-table";
+import { GlobalFilter, DefaultFilterForColumn } from "./Filter";
+ 
 export default function Table({ columns, data }) {
-  columns = useMemo(() => columns, []);
- // data = useMemo(() => data, []);
-  const TableInstance = useTable({
-    columns,
-    data
-  })
-
-  // // Use the useTable Hook to send the columns and data to build the table
   const {
-    getTableProps, // table props from react-table
-    getTableBodyProps, // table body props from react-table
-    headerGroups, // headerGroups, if your table has groupings
-    rows, // rows for the table based on the data passed
-    prepareRow // Prepare the row (this function needs to be called for each row before getting the row props)
-  } = TableInstance;
-
-  /* 
-    Render the UI for your table
-    - react-table doesn't have UI, it's headless. We just need to put the react-table props from the Hooks, and it will do its magic automatically
-  */
-  return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map(cell => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  );
+   getTableProps,
+   getTableBodyProps,
+   headerGroups,
+   rows,
+   state,
+   visibleColumns,
+   prepareRow,
+   setGlobalFilter,
+   preGlobalFilteredRows,
+ } = useTable(
+   {
+     columns,
+     data,
+     defaultColumn: { Filter: DefaultFilterForColumn },
+   },
+   useFilters
+ );
+ 
+ return (
+   <table {...getTableProps()}>
+     <thead>
+       {headerGroups.map((headerGroup) => (
+         <tr {...headerGroup.getHeaderGroupProps()}>
+           {headerGroup.headers.map((column) => (
+             <th {...column.getHeaderProps()}>
+               {column.render("Header")}
+               {/* Rendering Default Column Filter */}
+               <div>
+                 {column.canFilter ? column.render("Filter") 
+                  :null}
+               </div>
+             </th>
+           ))}
+         </tr>
+       ))}
+     </thead>
+     <tbody {...getTableBodyProps()}>
+       {rows.map((row, i) => {
+         prepareRow(row);
+         return (
+           <tr {...row.getRowProps()}>
+             {row.cells.map((cell) => {
+               return <td {...cell.getCellProps()}>
+           {cell.render("Cell")}
+         </td>;
+             })}
+           </tr>
+         );
+       })}
+     </tbody>
+   </table>
+ );
 }

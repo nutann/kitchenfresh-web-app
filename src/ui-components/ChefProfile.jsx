@@ -6,10 +6,20 @@
 
 /* eslint-disable */
 import React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useDataStoreDeleteAction,
+} from "@aws-amplify/ui-react/internal";
+import { Chef } from "../models";
+import { schema } from "../models/schema";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
 export default function ChefProfile(props) {
-  const { chefdetails, image, overrides, ...rest } = props;
+  const { ChefProperties, overrides, ...rest } = props;
+  const buttonOnClick = useDataStoreDeleteAction({
+    id: ChefProperties?.id,
+    model: Chef,
+    schema: schema,
+  });
   return (
     <Flex
       gap="24px"
@@ -29,17 +39,50 @@ export default function ChefProfile(props) {
         position="relative"
         borderRadius="160px"
         padding="0px 0px 0px 0px"
-        src={chefdetails?.image}
+        src={ChefProperties?.image}
         {...getOverrideProps(overrides, "image")}
       ></Image>
       <Flex
         gap="8px"
         direction="column"
+        width="fit-content"
         alignItems="center"
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
-        {...getOverrideProps(overrides, "Name")}
+        {...getOverrideProps(overrides, "Name34582815")}
+      >
+        <Text
+          fontFamily="Inter"
+          fontSize="16px"
+          fontWeight="400"
+          color="rgba(48,64,80,1)"
+          lineHeight="24px"
+          textAlign="center"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          letterSpacing="0.01px"
+          shrink="0"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children={ChefProperties?.email}
+          {...getOverrideProps(
+            overrides,
+            "Design Engineer at Cloth Studios34582817"
+          )}
+        ></Text>
+      </Flex>
+      <Flex
+        gap="8px"
+        direction="column"
+        width="fit-content"
+        alignItems="center"
+        shrink="0"
+        position="relative"
+        padding="0px 0px 0px 0px"
+        {...getOverrideProps(overrides, "Name29766901")}
       >
         <Text
           fontFamily="Inter"
@@ -55,7 +98,7 @@ export default function ChefProfile(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children={chefdetails?.name}
+          children={ChefProperties?.name}
           {...getOverrideProps(overrides, "Melinda Marcus")}
         ></Text>
         <Text
@@ -73,8 +116,11 @@ export default function ChefProfile(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children={chefdetails?.description}
-          {...getOverrideProps(overrides, "Design Engineer at Cloth Studios")}
+          children={ChefProperties?.description}
+          {...getOverrideProps(
+            overrides,
+            "Design Engineer at Cloth Studios29766903"
+          )}
         ></Text>
       </Flex>
       <Button
@@ -89,7 +135,10 @@ export default function ChefProfile(props) {
         size="large"
         isDisabled={false}
         variation="primary"
-        children="View Profile"
+        children="DELETE"
+        onClick={() => {
+          buttonOnClick();
+        }}
         {...getOverrideProps(overrides, "Button")}
       ></Button>
     </Flex>

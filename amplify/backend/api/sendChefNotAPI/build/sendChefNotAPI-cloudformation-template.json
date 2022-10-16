@@ -636,7 +636,7 @@
         }
       }
     },
-    "DeploymentAPIGWsendChefNotAPI9068f65e": {
+    "DeploymentAPIGWsendChefNotAPI34110089": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
