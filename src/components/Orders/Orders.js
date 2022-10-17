@@ -6,7 +6,6 @@ import { DateRangeColumnFilter, SelectColumnFilter } from '../utils/Filter'
 
 import Table from "../utils/Table";
 
-
 export default function Orders() {
   const columns = [
       {
@@ -102,6 +101,7 @@ export default function Orders() {
           return item;
         }));
         setData(items);
+     
         console.log(JSON.stringify(items));
     };
 

@@ -2,6 +2,7 @@ import { React } from "react";
 import './Table.css'
 import { useTable, useFilters, useGlobalFilter } from "react-table";
 import { GlobalFilter, DefaultFilterForColumn } from "./Filter";
+import {CSVLink, CSVDownload} from 'react-csv';
  
 export default function Table({ columns, data }) {
   const {
@@ -24,6 +25,8 @@ export default function Table({ columns, data }) {
  );
  
  return (
+  <div>
+ <CSVLink data={rows.map((item) => item.original)} >Download Order Report</CSVLink>
    <table {...getTableProps()}>
      <thead>
        {headerGroups.map((headerGroup) => (
@@ -56,5 +59,7 @@ export default function Table({ columns, data }) {
        })}
      </tbody>
    </table>
+  </div>
+ 
  );
 }
